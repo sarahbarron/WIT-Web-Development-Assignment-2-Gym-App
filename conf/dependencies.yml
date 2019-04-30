@@ -1,5 +1,6 @@
 # Application dependencies
 
 require:
-    - play
-    - play -> docviewer
+    - play 1.5.2
+    - org.postgresql -> postgresql 42.2.2:
+          force: true
