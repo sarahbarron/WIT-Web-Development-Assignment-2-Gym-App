@@ -1,0 +1,74 @@
+*{ Page where the Trainer can view a specific members details - The members analytics and all members assessments
+The trainer can add a comment to any of the assessments in the comment form }*
+#{extends 'main.html' /}
+#{set title:'Trainer Dashboard' /}
+
+#{if session.contains("logged_in_Memberid") || session.contains("logged_in_Trainerid")}
+    #{menu id:"dashboard"/}
+#{/if}
+#{else}
+    #{welcomemenu id:"dashboard"/}
+#{/else}
+
+#{analytics member:member, bmi:bmi, idealWeight:idealWeight, bmiCategory:bmiCategory/}
+
+<div class="ui raised segment">
+#{list items:assessmentlist, as:'assessment'}
+
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Weight</th>
+            <th>Chest</th>
+            <th>Thigh</th>
+            <th>Upper Arm</th>
+            <th>Waist</th>
+            <th>Hips</th>
+            <th>Trend</th>
+            <th colspan="2">Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div class="ui bulleted list">
+
+            <tr>
+                <td> ${(assessment.date).format('dd-MMM-yyyy hh:mm:ss')} </td>
+                <td> ${assessment.weight} </td>
+                <td> ${assessment.chest} </td>
+                <td> ${assessment.thigh} </td>
+                <td> ${assessment.upperarm} </td>
+                <td> ${assessment.waist} </td>
+                <td> ${assessment.hip} </td>
+                <td>
+                    #{if assessment.trend}
+                        <i class="green ui tag label"></i>
+                    #{/if}
+
+                    #{else}
+                        <i class="red ui tag label"></i>
+                    #{/else}
+                </td>
+                <td colspan="2">${assessment.comment}</td>
+            </tr>
+            <tr>
+                <td colspan="10">
+
+                    <form class="ui raised segment form" action="/member/&{member.id}/comment/${assessment.id}"
+                          method="POST">
+
+
+                        <div class="field">
+                            <label>Comments</label>
+                            <textarea rows="2" cols="50" name="comment"></textarea>
+                        </div>
+
+                        <button class="ui blue submit button">Update</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+#{/list}
+</div>

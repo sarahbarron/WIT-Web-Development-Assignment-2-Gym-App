@@ -1,0 +1,37 @@
+*{ This is the trainers dashboard, where they can view a list of all their members and can click on a member to
+be brought to that members details page }*
+#{extends 'main.html' /}
+#{set title:'Trainer Dashboard' /}
+
+#{if session.contains("logged_in_Memberid") || session.contains("logged_in_Trainerid")}
+    #{menu id:"dashboard"/}
+#{/if}
+#{else}
+    #{welcomemenu id:"dashboard"/}
+#{/else}
+
+<h1>Play Gym Trainer</h1>
+
+
+#{list items:memberlist, as:'memberlist'}
+<div class="ui raised segment">
+    <div class="ui grid">
+        <div class="row">
+            <div class="column ">
+                <i class=" huge icon github"></i>
+            </div>
+            <div class="column four wide">
+                <h2 class="ui header blue">
+                    <a href="/member/${memberlist.id}"> ${memberlist.firstname} ${memberlist.lastname}</a>
+                </h2>
+                <p> ${memberlist.assessmentlist.size()} assesments </p>
+            </div>
+            <div class="column">
+                <a href="/delete/member/${memberlist.id}" class="ui icon button">
+                    <i class="red icon trash"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+#{/list}

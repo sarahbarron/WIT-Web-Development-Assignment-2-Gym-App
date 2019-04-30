@@ -1,0 +1,13 @@
+*{ Navigation menu when no member or trainer is logged in }*
+<nav class="ui menu">
+    <header class="ui header item"><a href="/"> Play Gym </a></header>
+    <div class="right menu">
+        <a id="about" class="item" href="/about">About</a>
+        <a id="signup" class="item" href="/signup"> Register </a>
+        <a id="login" class="item" href="/login"> Login </a>
+    </div>
+</nav>
+
+<script>
+    $("#${_id}").addClass("active item");
+</script>

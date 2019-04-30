@@ -1,0 +1,27 @@
+*{ Home Page - with some details about the gym }*
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if session.contains("logged_in_Memberid") || session.contains("logged_in_Trainerid")}
+    #{menu id:"start"/}
+#{/if}
+#{else}
+    #{welcomemenu id:"start"/}
+
+#{/else}
+
+<div class="ui two column middle aligned grid basic segment">
+    <section class="column center aligned">
+        <h1 class="ui header">
+            BMI Tracker
+        </h1>
+        <p>
+            Fill in your assessments week by week and track your BMI.<br>
+            Trainers will comment on your progress and <br>
+            encourage you to keep going !
+        </p>
+    </section>
+    <div class="column">
+        <img src="/public/images/sport_icons.jpg" alt="sports icon for BMI tracker" class="ui image">
+    </div>
+</div>

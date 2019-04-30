@@ -1,0 +1,63 @@
+*{ The members dashboard page, shows members analytics, a form to add an assessment and details of all past assessments }*
+#{extends 'main.html' /}
+#{set title:'Member Dashboard' /}
+
+#{if session.contains("logged_in_Memberid") || session.contains("logged_in_Trainerid")}
+    #{menu id:"dashboard"/}
+#{/if}
+#{else}
+    #{welcomemenu id:"dashboard"/}
+#{/else}
+
+#{analytics member:member, bmi:bmi, idealWeight:idealWeight, bmiCategory:bmiCategory/}
+
+#{addassessment /}
+
+<div class="ui raised segment">
+
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th colspan="2">Date</th>
+            <th>Weight</th>
+            <th>Chest</th>
+            <th>Thigh</th>
+            <th>Upper Arm</th>
+            <th>Waist</th>
+            <th>Hips</th>
+            <th>Trend</th>
+            <th colspan="2">Comment</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <div class="ui bulleted list">
+        #{list items:assessmentlist, as:'assessment'}
+        <tr>
+            <td colspan="2"> ${(assessment.date).format('dd-MMM-yyyy hh:mm:ss')} </td>
+            <td> ${assessment.weight} </td>
+            <td> ${assessment.chest} </td>
+            <td> ${assessment.thigh} </td>
+            <td> ${assessment.upperarm} </td>
+            <td> ${assessment.waist} </td>
+            <td> ${assessment.hip} </td>
+            <td>
+                #{if assessment.trend}
+                    <i class="green ui tag label"></i>
+                #{/if}
+
+                #{else}
+                    <i class="red ui tag label"></i>
+                #{/else}
+            </td>
+            <td colspan="2"> ${assessment.comment}</td>
+            <td>
+                <a href="/delete/assessment/${assessment.id}" class="ui icon button">
+                    <i class="icon trash"></i>
+                </a>
+            </td>
+        #{/list}
+        </div>
+        </tbody>
+    </table>
+</div>

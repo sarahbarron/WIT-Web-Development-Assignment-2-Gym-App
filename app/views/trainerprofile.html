@@ -1,0 +1,60 @@
+*{ Trainers Profile page is a form for the Trainer to view their current profile details and update them if they
+wish. The inputted data is stored for the trainer}*
+
+#{extends 'main.html' /}
+#{set title:'Trainers Profile' /}
+
+#{if session.contains("logged_in_Memberid") || session.contains("logged_in_Trainerid")}
+    #{menu id:"profile"/}
+#{/if}
+#{else}
+    #{welcomemenu id:"profile"/}
+#{/else}
+
+
+<div class="ui two column grid basic middle aligned segment">
+    <div class="column">
+        <form class="ui stacked segment form" action="/update-trainer-profile" method="POST">
+            <h3 class="ui header">${trainer.firstname} Profile</h3>
+            <div class="two fields">
+                <div class="field">
+                    <label>First Name</label>
+                    <input placeholder=" ${trainer.firstname}" type="text" name="firstname">
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input placeholder=" ${trainer.lastname}" type="text" name="lastname">
+                </div>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input placeholder=" ${trainer.email}" type="text" name="email">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input placeholder="........" type="password" name="password">
+            </div>
+
+            <div class="field">
+                <label>Address</label>
+                <input placeholder=" ${trainer.address}" type="text" name="address">
+            </div>
+            <div class="field">
+                <label>Gender</label>
+            #{if trainer.gender.equals("male")}
+                <input type="radio" name="gender" value="male" checked>Male
+                <input type="radio" name="gender" value="female"> Female
+            #{/if}
+            #{else}
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female" checked> Female
+            #{/else}
+
+            </div>
+            <button class="ui blue submit button">Submit</button>
+        </form>
+    </div>
+    <div class="column">
+        <img class="ui image" src="/public/images/sport_icons.jpg">
+    </div>
+</div>

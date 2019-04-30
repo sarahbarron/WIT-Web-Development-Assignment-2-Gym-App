@@ -1,0 +1,141 @@
+Assessment(a1):
+  date: 2017-12-16 20:41:33
+  weight: 90.0
+  chest: 130
+  thigh: 60
+  upperarm: 40
+  waist: 100
+  hip: 120
+  trend: true
+Assessment(a2):
+  date: 2017-10-16 20:41:30
+  weight: 93
+  chest:  135
+  thigh:  65
+  upperarm: 45
+  waist:  105
+  hip:  125
+  trend: true
+
+Assessment(a3):
+  date: 2017-08-12 06:41:33
+  weight: 96
+  chest: 140
+  thigh: 70
+  upperarm: 50
+  waist: 110
+  hip: 130
+  trend: true
+
+Assessment(a4):
+  date: 2018-12-16 20:41:33
+  weight: 75.0
+  chest: 140
+  thigh: 60
+  upperarm: 40
+  waist: 100
+  hip: 120
+  trend: false
+
+Assessment(a5):
+  date: 2019-10-16 20:41:30
+  weight: 80
+  chest:  135
+  thigh:  65
+  upperarm: 45
+  waist:  105
+  hip:  125
+  trend: false
+
+Assessment(a6):
+  date: 2016-08-12 06:41:33
+  weight: 74
+  chest: 140
+  thigh: 70
+  upperarm: 50
+  waist: 110
+  hip: 130
+  trend: true
+
+Assessment(a7):
+  date: 2016-12-16 20:41:33
+  weight: 59.0
+  chest: 130
+  thigh: 60
+  upperarm: 40
+  waist: 100
+  hip: 120
+  trend: true
+
+Assessment(a8):
+  date: 2017-10-16 20:41:30
+  weight: 56.9
+  chest:  135
+  thigh:  65
+  upperarm: 45
+  waist:  105
+  hip:  125
+  trend: true
+
+Assessment(a9):
+  date: 2017-08-12 06:41:33
+  weight: 59.0
+  chest: 140
+  thigh: 70
+  upperarm: 50
+  waist: 110
+  hip: 130
+  trend: true
+
+Member(m1):
+  firstname: homer
+  lastname: simpson
+  email: homer@simpson.com
+  password: secret
+  address: Simpson Row
+  height: 1.85
+  startweight: 100
+  gender: male
+  assessmentlist:
+    - a1
+    - a2
+    - a3
+
+Member(m2):
+  firstname: lisa
+  lastname: simpson
+  email: lisa@simpson.com
+  password: secret
+  address: Simpson Row
+  height: 1.8
+  startweight: 80
+  gender: female
+  assessmentlist:
+    - a4
+    - a5
+    - a6
+
+Member(m3):
+  firstname: maggie
+  lastname: simpson
+  email: maggie@simpson.com
+  password: secret
+  address: Simpson Row
+  height: 1.65
+  startweight: 62
+  gender: female
+  assessmentlist:
+    - a7
+    - a8
+    - a9
+
+Trainer(t1):
+  firstname: Marge
+  lastname: Simpson
+  email: marge@simpson.com
+  password: secret
+  trainer: true
+  memberlist:
+    - m1
+    - m2
+    - m3

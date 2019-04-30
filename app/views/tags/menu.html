@@ -1,0 +1,18 @@
+*{ Navigation menu when a member or trainer is logged in}*
+
+<nav class="ui menu">
+    <header class="ui header item"><a href="/"> Play Gym </a></header>
+    <div class="right menu">
+        <a id="dashboard" class="item" href="/dashboard"> Dashboard </a>
+        <a id="about" class="item" href="/about"> About </a>
+
+        <a id="profile" class="item ui icon" href="/userprofile">
+            <i class="icon user"></i></a>
+
+        <a id="logout" class="item" href="/logout"> Logout </a>
+    </div>
+</nav>
+
+<script>
+    $("#${_id}").addClass("active item");
+</script>
