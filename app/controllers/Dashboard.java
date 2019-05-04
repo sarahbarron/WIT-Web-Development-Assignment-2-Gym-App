@@ -22,6 +22,7 @@ public class Dashboard extends Controller {
       Member member = Member.findById(Long.parseLong(memberId));
       List<Assessment> assessmentlist = member.assessmentlist;
       assessmentlist = member.sortedList();
+      float bmi;
 
       if (assessmentlist.size() <= 0) {
         latestAssessment = new Assessment(member.startweight, 0, 0, 0, 0, 0);
@@ -29,9 +30,9 @@ public class Dashboard extends Controller {
         latestAssessment = assessmentlist.get(0);
       }
 
-      double bmi = GymUtility.calculateBMI(member, latestAssessment);
+      bmi = (float) GymUtility.calculateBMI(member,latestAssessment);
+      String bmiCategory = GymUtility.determineBMICategory(bmi);
       boolean idealWeight = GymUtility.isIdealBodyWeight(member, latestAssessment);
-      String bmiCategory = GymUtility.determineBMICategory(member, latestAssessment);
 
       render("memberdashboard.html", member, assessmentlist, bmi, idealWeight, bmiCategory);
     }
@@ -85,6 +86,7 @@ public class Dashboard extends Controller {
     float previousWeight;
     float assessmentWeight;
     float weightDifference;
+    float bmi;
 
 //    iterate through every assessment and compare to the previous assessment
     for (int i = 0; i < assessments.size(); i++) {
@@ -105,7 +107,8 @@ public class Dashboard extends Controller {
 // subtract the previous weight from the current assessment weight
       weightDifference = assessmentWeight - previousWeight;
 //      get the bmi category the member was is at the time of the assessment
-      String bmiCategory = GymUtility.determineBMICategory(member, thisAssessment);
+      bmi = (float) GymUtility.calculateBMI(member,thisAssessment);
+      String bmiCategory = GymUtility.determineBMICategory(bmi);
 
 //    If the person was not underweight a loss/no-change was good so set to true
       if (weightDifference <= 0 && !bmiCategory.contains("UNDERWEIGHT")) {

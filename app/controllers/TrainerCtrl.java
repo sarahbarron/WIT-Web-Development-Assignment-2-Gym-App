@@ -33,8 +33,8 @@ public class TrainerCtrl extends Controller {
 
 
     boolean idealWeight = GymUtility.isIdealBodyWeight(member, latestAssessment);
-    String bmiCategory = GymUtility.determineBMICategory(member, latestAssessment);
-    double bmi = GymUtility.calculateBMI(member, latestAssessment);
+    float bmi = (float) GymUtility.calculateBMI(member,latestAssessment);
+    String bmiCategory = GymUtility.determineBMICategory(bmi);
 
     render("trainerviewmemberdetails.html", member, assessmentlist, bmi, idealWeight, bmiCategory);
   }

@@ -67,6 +67,10 @@ public class Member extends Person {
     return weight;
   }
 
+  public float getHeight() {
+    return height;
+  }
+
   // toString method for Member class
   public String toString() {
 
